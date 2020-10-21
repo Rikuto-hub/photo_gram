@@ -1,0 +1,44 @@
+.container
+  = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+    .field 
+      %div
+      = f.label :name, '名前'
+      %div
+      = f.text_field :name
+    .field  
+      %div
+      = f.label :user_name, 'アカウントネーム'
+      %div
+      = f.text_field :user_name
+    .field
+      %div
+      = f.label :icon, 'アイコン'
+      %div
+      = f.file_field :icon
+    .field  
+      %div
+      = f.label :introduce, '自己紹介'
+      %div
+      = f.text_area :introduce
+    .field  
+      %div
+      = f.label :web, 'webサイト'
+      %div
+      = f.url_field :web
+    %p 非公開
+    .field  
+      %div
+      = f.label :gender, '性別'
+      %div
+      = f.text_field :gender
+    .field  
+      %div
+      = f.label :number, '電話番号'
+      %div
+      = f.telephone_field :number
+    .field
+      = f.submit '保存', class: 'btn-primary'
+    .user_item
+      = link_to 'パスワード変更', edit_user_password_path
+    .user_item
+      = link_to 'アカウト削除', user_registration_path, data: {method: 'delete'}

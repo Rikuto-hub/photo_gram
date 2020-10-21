@@ -1,0 +1,39 @@
+.container 
+  .profile
+    .profile_top
+      .profile_edit 
+        - if current_user === user
+          = link_to '編集', edit_profile_path
+          = link_to 'ログアウト', destroy_user_session_path, data: {method: 'delete'}
+        - else
+          - if current_user&.has_followed?(user)
+            = link_to 'フォロー中', account_unfollows_path(user), data: {method: 'post'}
+          - else
+            = link_to 'フォローする', account_follows_path(user), data: {method: 'post'}
+      - if user.profile.present?
+        .profile_name
+          = user.profile.name
+          = "(#{user.profile.user_name})"
+        .profile_icon
+          - if user&.profile.icon.present?
+            = image_tag user.profile.icon
+    .count
+      .count_post
+        %p 投稿
+        = user.articles.count
+      .count_follow
+        %p follow
+        = user.followings.count
+      .count_follower
+        %p follower
+        = user.followers.count
+    .profile_introduce
+      %p= user&.profile&.introduce
+      - if user&.profile.present?
+        = link_to 'web', "#{user.profile.web}"
+  .profile_img
+    - user.articles.each do |article|
+      .profile_img_item{:id => "#{article.id}"}
+        = image_tag article.img.variant(combine_options:{gravity: :center, resize:"640x640^", crop:"640x640+0+0"}).processed
+  .graydisplay
+    

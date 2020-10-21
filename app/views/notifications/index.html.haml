@@ -1,0 +1,8 @@
+.container
+  %h3.text-center 通知
+  = link_to "通知削除", notification_path(@notifications), method: :delete ,class: "fas fa-trash"
+  - if @notifications.exists?
+    .notification-index
+      = render @notifications
+  - else
+    %p 通知はありません

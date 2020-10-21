@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Photo_App
+    = csrf_meta_tags
+    = csp_meta_tag
+    = display_meta_tags(default_meta_tags)
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = analytics_init if Rails.env.production?
+  %body
+    %header.header
+      .header_title 
+        = link_to 'Photo📷Gram', root_path
+        = form_tag(searches_path,:method => 'get') do
+          = text_field_tag :search
+          = submit_tag 'Search', :name => nil
+      - if user_signed_in?
+        .header_right
+          = link_to 'プロフィール', profile_path
+          .header_item
+            = link_to '+', new_article_path
+            = link_to '☑︎', notifications_path
+      - else
+        .header_facebook
+          = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
+          = link_to 'ログイン', new_user_session_path
+      - if flash.present?
+        .flash
+          - flash.each do |key, value|
+            %div{:class => key}
+              = value
+    = yield

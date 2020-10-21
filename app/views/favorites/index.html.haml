@@ -1,0 +1,6 @@
+.container
+  .favarite_title 
+    %p Favorite 一覧
+  .profile_img
+    - @articles.each do |article|
+      = image_tag article.img.variant(combine_options:{gravity: :center, resize:"640x640^", crop:"640x640+0+0"}).processed

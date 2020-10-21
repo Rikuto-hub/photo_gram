@@ -1,0 +1,31 @@
+.container#article-show{data: {article_id: @article.id}}
+  .article
+    .article_item
+      = link_to account_path(@article.user) do
+        .article_name
+          - if @article.user&.profile&.name.present?
+            = @article.user&.profile&.name
+          - else 
+            User
+      = image_tag @article.img.variant(combine_options:{gravity: :center, resize:"640x640^", crop:"640x640+0+0"}).processed
+      .article_content
+        .article_content_item
+          = @article.content
+        .like
+          .active_heart.hidden
+            ❤️
+          .inactive_heart.hidden
+            ♡
+        - if @article.user === current_user
+          = link_to '削除', article_path(@article), data: {method: 'delete'}
+  %p.comment_all コメント一覧
+  .comment_container
+    .btn.show_comment_form
+      コメントを追加
+    .comment_text_area.hidden
+      = text_area_tag :comment_content, ''
+      .btn.add_comment_button
+        コメントを追加
+= javascript_pack_tag 'like'
+= javascript_pack_tag 'comment'
+    

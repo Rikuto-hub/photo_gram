@@ -1,0 +1,65 @@
+.profile{
+  &_top{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin: 30px 0;
+  }
+  img{
+    width: 50px;
+    height: 50px;
+  }
+  &_edit{
+    a{
+      display: block;
+      text-align: center;
+    }
+  }
+  &_introduce{
+    display: block;
+    border-bottom: ridge;
+    margin: 30px 0;
+    p{
+      border-bottom: ridge;
+    }
+  }
+  .count{
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-around;
+    &_post, &_follow, &_follower{
+      text-align: center;
+    }
+  }
+  &_img{
+    padding: 20px 0;
+    img{
+      width: calc(100% / 3);
+      float: left;
+    }
+  }
+}
+.user_item{
+  padding: 20px 0;
+}
+.graydisplay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%!important;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+}
+.graydisplay img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  height: 90%;
+}
