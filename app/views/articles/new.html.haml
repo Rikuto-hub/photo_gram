@@ -1,0 +1,19 @@
+.container
+  = form_with(model: @article, local: true) do |f|
+    .field
+      %div
+      = f.label :img, '画像'
+      %div
+      = f.file_field :img
+    .field
+      %div
+      = f.label :content, '内容'
+      %div
+      = f.text_area :content
+    .field
+      %div
+      = f.label :tag, 'tag'
+      %div
+      = f.text_field :tag
+    .field
+      = f.submit '保存', class: 'btn-primary'

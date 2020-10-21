@@ -1,0 +1,98 @@
+@import 'article';
+@import 'profile';
+@import 'comment';
+@import 'like';	
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+    &:hover{
+        opacity: 0.7;
+    }
+}
+.container{
+    padding: 20px 50px;
+}
+.header{
+    padding: 30px 0px;
+    display: flex;
+    justify-content: space-between;   
+    background-color: #CC0066;
+    font-size: 25px;
+    &_title{
+        margin: 0 20px;
+    }
+    &_right{
+        a{
+            margin: 0 20px;
+        }
+    }
+    &_item{
+        text-align: center;
+    }
+    &_facebook{
+        margin: 0 20px;
+        a{
+            display: block;
+            text-align: center;
+        }
+    }
+}
+.field{
+    padding: 20px;
+}
+.hidden{
+    display: none;
+}
+.flash {
+    position: fixed;
+    top: 16px;
+    font-size: 12px;
+    right: 16px;
+    width: 160px;
+    color: white;
+    background: black;
+    -webkit-animation: fade-in-out;
+    animation: fade-in-out;
+    visibility: hidden;
+    z-index: 1;
+    padding: 16px;
+    animation-duration: 5s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  }
+  
+  @-webkit-keyframes fade-in-out {
+    0% {
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    50% {
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    100% {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fade-in-out {
+    0% {
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    50% {
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    100% {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }

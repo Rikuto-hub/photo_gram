@@ -1,0 +1,9 @@
+.container
+  .article
+    %p TIME LINE
+    - @articles.each do |article|
+      = link_to article_path(article) do
+        .article_item
+          = image_tag article.img.variant(combine_options:{gravity: :center, resize:"640x640^", crop:"640x640+0+0"}).processed
+        .article_content
+          = article.content
